@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>understatdb</title>
+        <description>An extendable project for creating a database of soccer data</description>
+        <link>http://0.0.0.0:4000/</link>
+        <atom:link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/rss+xml"/>
+        <pubDate>Sun, 09 May 2021 21:29:45 +0000</pubDate>
+        <lastBuildDate>Sun, 09 May 2021 21:29:45 +0000</lastBuildDate>
+        <generator>Jekyll v3.9.0</generator>
+        
+    </channel>
+</rss>

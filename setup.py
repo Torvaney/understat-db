@@ -32,8 +32,10 @@ lic = licenses.get(cfg['license'].lower(), (cfg['license'], None))
 min_python = cfg['min_python']
 
 requirements = ['pip', 'packaging']
-if cfg.get('requirements'): requirements += cfg.get('requirements','').split()
-if cfg.get('pip_requirements'): requirements += cfg.get('pip_requirements','').split()
+if cfg.get('requirements'):
+    requirements += cfg.get('requirements', '').split()
+if cfg.get('pip_requirements'):
+    requirements += cfg.get('pip_requirements', '').split()
 dev_requirements = (cfg.get('dev_requirements') or '').split()
 
 long_description = open('README.md').read()
@@ -61,4 +63,3 @@ setuptools.setup(
     zip_safe = False,
     entry_points = { 'console_scripts': cfg.get('console_scripts','').split() },
     **setup_cfg)
-
