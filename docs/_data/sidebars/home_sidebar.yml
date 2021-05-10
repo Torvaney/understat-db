@@ -13,6 +13,9 @@ entries:
       title: Understat-DB CLI
       url: app.html
     - output: web,pdf
+      title: Database
+      url: db.html
+    - output: web,pdf
       title: Understat
       url: understat.html
     output: web

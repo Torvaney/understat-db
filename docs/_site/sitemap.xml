@@ -6,7 +6,19 @@
   
   
   <url>
+    <loc>http://0.0.0.0:4000/Untitled.html</loc>
+  </url>
+  
+  
+  
+  <url>
     <loc>http://0.0.0.0:4000/app.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://0.0.0.0:4000/db.html</loc>
   </url>
   
   

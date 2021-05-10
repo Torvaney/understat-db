@@ -2,6 +2,7 @@
   "understatdb": {
     "Overview": "/",
     "Understat-DB CLI": "app.html",
+    "Database": "db.html",
     "Understat": "understat.html"
   }
 }
