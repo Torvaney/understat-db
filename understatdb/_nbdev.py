@@ -2,14 +2,23 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"app": "00_app.ipynb",
-         "hello": "00_app.ipynb",
+index = {"app": "app.ipynb",
+         "hello": "app.ipynb",
+         "migrate": "app.ipynb",
+         "DB": "db.ipynb",
+         "evolve_ignore": "db.ipynb",
+         "prefixed_snake_case": "db.ipynb",
+         "BaseModel": "db.ipynb",
+         "EVOLVE_IGNORE_TABLES": "db.ipynb",
+         "League": "understat.ipynb",
+         "Season": "db.ipynb",
+         "Matches": "db.ipynb",
          "fetch_html": "understat.ipynb",
          "extract_json": "understat.ipynb",
-         "League": "understat.ipynb",
          "Understat": "understat.ipynb"}
 
-modules = ["core.py",
+modules = ["app.py",
+           "db.py",
            "understat.py"]
 
 doc_url = "https://torvaney.github.io/understatdb/"

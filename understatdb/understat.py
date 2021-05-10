@@ -3,10 +3,12 @@
 __all__ = ['fetch_html', 'extract_json', 'League', 'Understat']
 
 # Cell
+import enum
 import re
+import json
+
 import requests
 import bs4
-import json
 
 
 def fetch_html(url):
@@ -29,9 +31,9 @@ def extract_json(soup, json_var):
     return json.loads(json_value)
 
 # Cell
-import enum
 
 
+# 'Competition' might be a better name, but let's stick with understat's terminology
 class League(enum.Enum):
     """
     Understat leagues

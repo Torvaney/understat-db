@@ -1,5 +1,6 @@
 version: "3"
 services:
+
   fastai: &fastai
     restart: unless-stopped
     working_dir: /data
@@ -29,7 +30,18 @@ services:
     ports:
      - "4000:4000"
     command: >
-     bash -c "pip install .
+     bash -c "pip install -e .
      && nbdev_build_docs && cd docs
      && bundle i
      && chmod -R u+rwx . && bundle exec jekyll serve --host 0.0.0.0"
+
+  db:
+    image: postgres:12.5  # Make sure we use v12+ for CTE inlining
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: understat
+    volumes:
+      - ./.pg_data:/var/lib/postgresql/data
+    ports:
+      - 7865:5432
