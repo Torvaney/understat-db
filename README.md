@@ -2,6 +2,8 @@
 > Create a database using data from <a href='understat.com'>Understat</a>.
 
 
+Understat DB is a project to scrape data from [Understat](understat.com) and store it in a Postgres database. It aims to be a useful companion or starting point for projects using football data.
+
 ## Usage
 
 The simplest way to get started is to populate a local database with `docker-compose`.

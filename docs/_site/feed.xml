@@ -5,8 +5,8 @@
         <description>An extendable project for creating a database of soccer data</description>
         <link>http://0.0.0.0:4000/</link>
         <atom:link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Tue, 11 May 2021 19:56:34 +0000</pubDate>
-        <lastBuildDate>Tue, 11 May 2021 19:56:34 +0000</lastBuildDate>
+        <pubDate>Tue, 11 May 2021 20:09:42 +0000</pubDate>
+        <lastBuildDate>Tue, 11 May 2021 20:09:42 +0000</lastBuildDate>
         <generator>Jekyll v3.9.0</generator>
         
     </channel>
