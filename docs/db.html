@@ -47,7 +47,7 @@ nb_path: "nbs/db.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="evolve_ignore" class="doc_header"><code>evolve_ignore</code><a href="https://github.com/torvaney/understatdb/tree/master/understatdb/db.py#L20" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>evolve_ignore</code>(<strong><code>registry</code></strong>=<em><code>['base_base_model']</code></em>)</p>
+<h4 id="evolve_ignore" class="doc_header"><code>evolve_ignore</code><a href="https://github.com/torvaney/understatdb/tree/master/understatdb/db.py#L21" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>evolve_ignore</code>(<strong><code>registry</code></strong>=<em><code>['base_base_model']</code></em>)</p>
 </blockquote>
 
 </div>
@@ -71,7 +71,7 @@ nb_path: "nbs/db.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="prefixed_snake_case" class="doc_header"><code>prefixed_snake_case</code><a href="https://github.com/torvaney/understatdb/tree/master/understatdb/db.py#L25" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>prefixed_snake_case</code>(<strong><code>prefix</code></strong>)</p>
+<h4 id="prefixed_snake_case" class="doc_header"><code>prefixed_snake_case</code><a href="https://github.com/torvaney/understatdb/tree/master/understatdb/db.py#L26" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>prefixed_snake_case</code>(<strong><code>prefix</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -95,7 +95,7 @@ nb_path: "nbs/db.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="BaseModel" class="doc_header"><code>class</code> <code>BaseModel</code><a href="https://github.com/torvaney/understatdb/tree/master/understatdb/db.py#L30" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>BaseModel</code>(<strong>*<code>args</code></strong>, <strong>**<code>kwargs</code></strong>) :: <code>Model</code></p>
+<h2 id="BaseModel" class="doc_header"><code>class</code> <code>BaseModel</code><a href="https://github.com/torvaney/understatdb/tree/master/understatdb/db.py#L31" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>BaseModel</code>(<strong>*<code>args</code></strong>, <strong>**<code>kwargs</code></strong>) :: <code>Model</code></p>
 </blockquote>
 <p>A model for base (json) data from Understat</p>
 
@@ -119,35 +119,22 @@ nb_path: "nbs/db.ipynb"
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
 
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">League</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
-    <span class="nb">id</span> <span class="o">=</span> <span class="n">peewee</span><span class="o">.</span><span class="n">PrimaryKeyField</span><span class="p">()</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="n">peewee</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
-</pre></div>
+<div class="output_wrapper">
+<div class="output">
 
-    </div>
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h2 id="League" class="doc_header"><code>class</code> <code>League</code><a href="https://github.com/torvaney/understatdb/tree/master/understatdb/db.py#L43" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>League</code>(<strong>*<code>args</code></strong>, <strong>**<code>kwargs</code></strong>) :: <a href="/understatdb/db.html#BaseModel"><code>BaseModel</code></a></p>
+</blockquote>
+<p>A model for base (json) data from Understat</p>
+
 </div>
-</div>
 
 </div>
-    {% endraw %}
 
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Season</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
-    <span class="nb">id</span> <span class="o">=</span> <span class="n">peewee</span><span class="o">.</span><span class="n">PrimaryKeyField</span><span class="p">()</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="n">peewee</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
-</pre></div>
-
-    </div>
 </div>
 </div>
 
@@ -157,47 +144,102 @@ nb_path: "nbs/db.ipynb"
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
 
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Matches</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
-    <span class="nb">id</span> <span class="o">=</span> <span class="n">peewee</span><span class="o">.</span><span class="n">PrimaryKeyField</span><span class="p">()</span>
-    
-    <span class="c1"># Since we&#39;re ingesting the data before reshaping</span>
-    <span class="c1"># and testing with dbt (ELT not ETL), we might prefer </span>
-    <span class="c1"># flexibility to the correctness that a FK provides</span>
-    <span class="c1"># But since understat don&#39;t actually provide any</span>
-    <span class="c1"># IDs (afaik, it&#39;s all indexed by league *name*),</span>
-    <span class="c1"># we&#39;re going to be making our own IDs anyway.</span>
-    <span class="c1"># At which point, I prefer the thing</span>
-    <span class="n">league_id</span> <span class="o">=</span> <span class="n">peewee</span><span class="o">.</span><span class="n">ForeignKeyField</span><span class="p">(</span><span class="n">League</span><span class="p">)</span>
-    
-    <span class="c1"># Similar logic to above (`league_id`),</span>
-    <span class="c1"># we&#39;re creating our own season IDs.</span>
-    <span class="c1"># Understat indexes by season start year,</span>
-    <span class="c1"># so we could conceivably just use an </span>
-    <span class="c1"># integer field and refactor if that assumption</span>
-    <span class="c1"># is ever violated.</span>
-    <span class="n">season_id</span> <span class="o">=</span> <span class="n">peewee</span><span class="o">.</span><span class="n">ForeignKeyField</span><span class="p">(</span><span class="n">Season</span><span class="p">)</span>
-    
-    <span class="c1"># Dump the scraped JSON as JSON</span>
-    <span class="c1"># We&#39;ll clean it up in dbt</span>
-    <span class="n">json</span> <span class="o">=</span> <span class="n">playhouse</span><span class="o">.</span><span class="n">postgres_ext</span><span class="o">.</span><span class="n">JSONField</span><span class="p">()</span>
+</div>
+    {% endraw %}
 
-    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
-        <span class="n">indexes</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="c1"># Force uniqueness on the combination of </span>
-            <span class="c1"># league and season ID.</span>
-            <span class="c1"># We should only ever have one row per</span>
-            <span class="c1"># league, per season!</span>
-            <span class="p">((</span><span class="s1">&#39;league_id&#39;</span><span class="p">,</span> <span class="s1">&#39;season_id&#39;</span><span class="p">),</span> <span class="kc">True</span><span class="p">),</span>
-        <span class="p">)</span>
-</pre></div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
 
-    </div>
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h2 id="Season" class="doc_header"><code>class</code> <code>Season</code><a href="https://github.com/torvaney/understatdb/tree/master/understatdb/db.py#L50" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Season</code>(<strong>*<code>args</code></strong>, <strong>**<code>kwargs</code></strong>) :: <a href="/understatdb/db.html#BaseModel"><code>BaseModel</code></a></p>
+</blockquote>
+<p>A model for base (json) data from Understat</p>
+
+</div>
+
+</div>
+
 </div>
 </div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h2 id="Matches" class="doc_header"><code>class</code> <code>Matches</code><a href="https://github.com/torvaney/understatdb/tree/master/understatdb/db.py#L57" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Matches</code>(<strong>*<code>args</code></strong>, <strong>**<code>kwargs</code></strong>) :: <a href="/understatdb/db.html#BaseModel"><code>BaseModel</code></a></p>
+</blockquote>
+<p>A model for base (json) data from Understat</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h2 id="Shots" class="doc_header"><code>class</code> <code>Shots</code><a href="https://github.com/torvaney/understatdb/tree/master/understatdb/db.py#L99" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Shots</code>(<strong>*<code>args</code></strong>, <strong>**<code>kwargs</code></strong>) :: <a href="/understatdb/db.html#BaseModel"><code>BaseModel</code></a></p>
+</blockquote>
+<p>A model for base (json) data from Understat</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
 
 </div>
     {% endraw %}

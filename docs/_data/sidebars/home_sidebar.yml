@@ -11,7 +11,7 @@ entries:
       url: /
     - output: web,pdf
       title: Understat-DB CLI
-      url: app.html
+      url: cli.html
     - output: web,pdf
       title: Database
       url: db.html
