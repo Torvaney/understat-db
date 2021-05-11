@@ -1,0 +1,53 @@
+
+version: 2
+
+models:
+
+    - name: match
+      description: "Understat match data"
+      columns:
+          - name: id
+            description: "The Match ID provided by Understat (primary key)"
+            tests:
+                - unique
+                - not_null
+          - name: kickoff
+            tests:
+                - not_null
+          - name: is_result
+            description: "Whether or not the match has been completed, with match data available"
+            tests:
+                - not_null
+          - name: home_team_id
+            tests:
+                - not_null
+                - relationships:
+                    to: ref('team')
+                    field: id
+          - name: away_team_id
+            tests:
+                - not_null
+                - relationships:
+                    to: ref('team')
+                    field: id
+          - name: home_goals
+            tests:
+                - not_negative
+          - name: away_goals
+            tests:
+                - not_negative
+          - name: home_xg
+            tests:
+                - between_0_and_1
+          - name: away_xg
+            tests:
+                - between_0_and_1
+          - name: forecast_h
+            tests:
+                - between_0_and_1
+          - name: forecast_d
+            tests:
+                - between_0_and_1
+          - name: forecast_a
+            tests:
+                - between_0_and_1

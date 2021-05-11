@@ -17,7 +17,7 @@ def fetch_html(url):
     """
     r = requests.get(url)
     r.raise_for_status()
-    return bs4.BeautifulSoup(str(r.content, 'unicode-escape'))
+    return bs4.BeautifulSoup(str(r.content, 'unicode-escape'), features='html.parser')
 
 
 def extract_json(soup, json_var):

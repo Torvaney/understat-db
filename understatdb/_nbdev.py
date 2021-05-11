@@ -2,9 +2,11 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"app": "app.ipynb",
-         "hello": "app.ipynb",
-         "migrate": "app.ipynb",
+index = {"app": "cli.ipynb",
+         "initialize_db": "cli.ipynb",
+         "migrate": "cli.ipynb",
+         "ingest": "cli.ipynb",
+         "build_tables": "cli.ipynb",
          "DB": "db.ipynb",
          "evolve_ignore": "db.ipynb",
          "prefixed_snake_case": "db.ipynb",
@@ -13,11 +15,12 @@ index = {"app": "app.ipynb",
          "League": "understat.ipynb",
          "Season": "db.ipynb",
          "Matches": "db.ipynb",
+         "Shots": "db.ipynb",
          "fetch_html": "understat.ipynb",
          "extract_json": "understat.ipynb",
          "Understat": "understat.ipynb"}
 
-modules = ["app.py",
+modules = ["cli.py",
            "db.py",
            "understat.py"]
 
