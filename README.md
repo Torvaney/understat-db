@@ -16,17 +16,18 @@ cd understat-db
 Then, setup the local environment
 
 ```bash
-make env             # Creates a virtualenv and installs the project & dependencies
-cp .env.sample .env  # Copy default environment vars to .env
+make env                 # Creates a virtualenv and installs the project & dependencies
+cp .env.sample .env      # Copy default environment vars to .env
 ```
 
 Run the database
 
 ```bash
-docker-compose up -d db
+docker-compose up -d db  # Starts a postgres database within a docker container
+understat-db migrate     # Creates base database tables
 ```
 
-Import the data you want
+Finally, import the data you want
 
 ```bash
 understat-db ingest --leagues EPL --seasons 2020
