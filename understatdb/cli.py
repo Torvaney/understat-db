@@ -7,6 +7,7 @@ import os
 import pathlib
 import itertools
 import typing
+import time
 
 import dbt.main
 import dotenv
@@ -82,7 +83,7 @@ def ingest(
             db_league, _ = understatdb.db.League.get_or_create(name=league.value)
             db_season, _ = understatdb.db.Season.get_or_create(name=season)
 
-        # Check if a record for this league and season already exists. If so, skip it
+        # Check if a record for this league and season already exists. If so, skip it.
         existing_record = understatdb.db.Matches.get_or_none(
             league_id=db_league.id,
             season_id=db_season.id
@@ -95,9 +96,8 @@ def ingest(
             )
             continue
 
-        typer.secho(f'Ingesting data for {league.value}, {season}', fg=typer.colors.BLUE)
-
         # Add match and shot data to DB
+        typer.secho(f'Ingesting data for {league.value}, {season}', fg=typer.colors.BLUE)
         with understatdb.db.DB.atomic():
 
             # Fetch match data from understat
@@ -121,6 +121,13 @@ def ingest(
                 for match in progress:
                     if not match['isResult']:
                         continue
+
+                    # Add an artificial crawl delay to avoid bombarding
+                    # understat with requests
+                    # There's no robots.txt or ToS available on the site,
+                    # So we just use a relatively conservative delay of
+                    # 5 seconds per (shots) request
+                    time.sleep(5)
 
                     match_id = int(match['id'])
                     shots = client.shots(match_id)
