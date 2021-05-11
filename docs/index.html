@@ -6,8 +6,8 @@ title: Understat DB
 keywords: fastai
 sidebar: home_sidebar
 
-summary: "Create a database of sports data using data from <a href='understat.com'>understat</a>."
-description: "Create a database of sports data using data from <a href='understat.com'>understat</a>."
+summary: "Create a database using data from <a href='understat.com'>Understat</a>."
+description: "Create a database using data from <a href='understat.com'>Understat</a>."
 nb_path: "nbs/index.ipynb"
 ---
 <!--
@@ -29,6 +29,29 @@ nb_path: "nbs/index.ipynb"
 </div>
     {% endraw %}
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Usage">Usage<a class="anchor-link" href="#Usage"> </a></h2><p>The simplest way to get started is to populate a local database with <code>docker-compose</code>.</p>
+<p>First, clone the repository:</p>
+<div class="highlight"><pre><span></span>git clone https://github.com/Torvaney/understat-db.git
+<span class="nb">cd</span> understat-db
+</pre></div>
+<p>Then, setup the local environment</p>
+<div class="highlight"><pre><span></span>make env             <span class="c1"># Creates a virtualenv and installs the project &amp; dependencies</span>
+cp .env.sample .env  <span class="c1"># Copy default environment vars to .env</span>
+</pre></div>
+<p>Run the database</p>
+<div class="highlight"><pre><span></span>docker-compose up -d db
+</pre></div>
+<p>Import the data you want</p>
+<div class="highlight"><pre><span></span>understat-db ingest --leagues EPL --seasons <span class="m">2020</span>
+</pre></div>
+<h2 id="Contributing">Contributing<a class="anchor-link" href="#Contributing"> </a></h2><p>Pull requests are encouraged! For major changes, please open an issue first to discuss what you would like to change.</p>
+<h2 id="License">License<a class="anchor-link" href="#License"> </a></h2><p><a href="https://choosealicense.com/licenses/mit/">MIT</a></p>
+
+</div>
+</div>
+</div>
 </div>
  
 
