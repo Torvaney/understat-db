@@ -38,6 +38,11 @@ app = EnvTyper()
 
 
 def initialize_db():
+    """
+    Load database config from environment and initialise
+    `understatdb.db.DB` with a database connection.
+    """
+
     # Load database config from environment
     postgres_db = playhouse.postgres_ext.PostgresqlExtDatabase(
         host=os.environ['DB_HOST'],
@@ -88,6 +93,7 @@ def build_tables(args: typing.List[str] = typer.Option([], help='Additional argu
 
     # NOTE: Python API is not officially supported, so
     # watch out if you change dbt versions...
+    typer.secho('Building tables with dbt', fg=typer.colors.BLUE)
     _ = dbt.main.handle_and_check(base_args + list(args))
 
 # Cell
@@ -178,8 +184,8 @@ def ingest(
                         version=understatdb.__version__
                     )
 
-        # Rebuild tables in dbt
-        build_tables(args=[])
+    # Rebuild tables in dbt
+    build_tables(args=[])
 
 # Cell
 
@@ -198,5 +204,4 @@ except ImportError:
     IN_NOTEBOOK = False
 
 if __name__ == '__main__' and not IN_NOTEBOOK:
-    dotenv.load_dotenv()
     app()
