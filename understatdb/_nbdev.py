@@ -2,7 +2,8 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"app": "cli.ipynb",
+index = {"EnvTyper": "cli.ipynb",
+         "app": "cli.ipynb",
          "initialize_db": "cli.ipynb",
          "migrate": "cli.ipynb",
          "build_tables": "cli.ipynb",
