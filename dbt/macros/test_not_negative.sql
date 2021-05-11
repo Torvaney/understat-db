@@ -11,9 +11,12 @@ with validation as (
 validation_errors as (
 
     select
-        even_field
+        not_negative_field
     from validation
-    where not_negative_field < 0
+    where (not_negative_field < 0)
+       -- allow null values since this test can be combined with
+       -- a not_null test
+       and (not_negative_field is not null)
 
 )
 

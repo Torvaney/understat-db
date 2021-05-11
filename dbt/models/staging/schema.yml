@@ -38,10 +38,10 @@ models:
                 - not_negative
           - name: home_xg
             tests:
-                - between_0_and_1
+                - not_negative
           - name: away_xg
             tests:
-                - between_0_and_1
+                - not_negative
           - name: forecast_h
             tests:
                 - between_0_and_1
@@ -51,3 +51,105 @@ models:
           - name: forecast_a
             tests:
                 - between_0_and_1
+
+    - name: league
+      description: "Understat league data"
+      columns:
+          - name: id
+            description: "The League ID (primary key)"
+            tests:
+                - unique
+                - not_null
+          - name: name
+
+    - name: season
+      description: "Understat season data"
+      columns:
+          - name: id
+            description: "The Season ID (primary key)"
+            tests:
+                - unique
+                - not_null
+          - name: name
+
+    - name: player
+      description: "Understat season data"
+      columns:
+          - name: id
+            description: "The Player ID provided by Understat (primary key)"
+            tests:
+                - unique
+                - not_null
+          - name: name
+
+    - name: team
+      description: "Understat season data"
+      columns:
+          - name: id
+            description: "The Player ID provided by Understat (primary key)"
+            tests:
+                - unique
+                - not_null
+          - name: title
+            description: "The team name"
+            tests:
+                - not_null
+          - name: short_title
+            description: "A short version of the team name"
+            tests:
+                - not_null
+
+    - name: shot
+      description: "Understat season data"
+      columns:
+          - name: id
+            description: "The Shot ID provided by Understat (primary key)"
+            tests:
+                - unique
+                - not_null
+          - name: match_id
+            tests:
+                - not_null
+                - relationships:
+                    to: ref('match')
+                    field: id
+          - name: minute
+          - name: x
+            description: "x-coordinate of the shot (along the touchline, 1 = opponent's goal)"
+            tests:
+                - between_0_and_1
+          - name: y
+            description: "y-coordinate of the shot (along the goal line)"
+            tests:
+                - between_0_and_1
+          - name: xg
+            description: "Expected Goals (xG) per Understat's model"
+            tests:
+                - between_0_and_1
+          - name: body_part
+            description: "Body part with which the shot was taken"
+          - name: result
+            description: "Shot outcome"
+          - name: situation
+            description: "The type of play in which the shot was taken"
+          - name: previous_action
+            description: "The type of action preceding the shot"
+          - name: player_id
+            tests:
+                - not_null
+                - relationships:
+                    to: ref('player')
+                    field: id
+          - name: is_home
+          - name: team_id
+            tests:
+                - not_null
+                - relationships:
+                    to: ref('team')
+                    field: id
+          - name: opponent_id
+            tests:
+                - not_null
+                - relationships:
+                    to: ref('team')
+                    field: id

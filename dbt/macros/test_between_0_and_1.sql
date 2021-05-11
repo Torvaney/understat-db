@@ -11,10 +11,12 @@ with validation as (
 validation_errors as (
 
     select
-        even_field
+        percent_field
     from validation
-    where percent_field < 0
-       or percent_field > 1
+    where (percent_field < 0 or percent_field > 1)
+       -- allow null values since this test can be combined with
+       -- a not_null test
+       and (percent_field is not null)
 
 )
 

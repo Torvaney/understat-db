@@ -40,7 +40,7 @@ base_shots as (
     (json ->> 'X')::float          as x,
     (json ->> 'Y')::float          as y,
     (json ->> 'xG')::float         as xg,
-    (json ->> 'shotType')          as type,
+    (json ->> 'shotType')          as body_part,
     (json ->> 'result')            as result,
     (json ->> 'situation')         as situation,
     (json ->> 'lastAction')        as previous_action,
