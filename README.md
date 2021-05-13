@@ -18,15 +18,16 @@ cd understat-db
 Then, setup the local environment
 
 ```bash
-make env                 # Creates a virtualenv and installs the project & dependencies
-cp .env.sample .env      # Copy default environment vars to .env
+make env                  # Create a virtualenv and installs the project & dependencies
+source venv/bin/activate  # Activate the virtualenv
+cp .env.sample .env       # Copy default environment vars to .env
 ```
 
 Run the database
 
 ```bash
-docker-compose up -d db  # Starts a postgres database within a docker container
-understat-db migrate     # Creates base database tables
+docker-compose up -d db   # Start a postgres database within a docker container
+understat-db migrate      # Create base database tables
 ```
 
 Finally, import the data you want

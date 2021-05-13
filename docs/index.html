@@ -44,12 +44,13 @@ nb_path: "nbs/index.ipynb"
 <span class="nb">cd</span> understat-db
 </pre></div>
 <p>Then, setup the local environment</p>
-<div class="highlight"><pre><span></span>make env                 <span class="c1"># Creates a virtualenv and installs the project &amp; dependencies</span>
-cp .env.sample .env      <span class="c1"># Copy default environment vars to .env</span>
+<div class="highlight"><pre><span></span>make env                  <span class="c1"># Create a virtualenv and installs the project &amp; dependencies</span>
+<span class="nb">source</span> venv/bin/activate  <span class="c1"># Activate the virtualenv</span>
+cp .env.sample .env       <span class="c1"># Copy default environment vars to .env</span>
 </pre></div>
 <p>Run the database</p>
-<div class="highlight"><pre><span></span>docker-compose up -d db  <span class="c1"># Starts a postgres database within a docker container</span>
-understat-db migrate     <span class="c1"># Creates base database tables</span>
+<div class="highlight"><pre><span></span>docker-compose up -d db   <span class="c1"># Start a postgres database within a docker container</span>
+understat-db migrate      <span class="c1"># Create base database tables</span>
 </pre></div>
 <p>Finally, import the data you want</p>
 <div class="highlight"><pre><span></span>understat-db ingest --leagues EPL --seasons <span class="m">2020</span>
