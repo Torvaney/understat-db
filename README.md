@@ -36,6 +36,13 @@ Finally, import the data you want
 understat-db ingest --leagues EPL --seasons 2020
 ```
 
+## Requirements
+
+To run this project you will need:
+
+* Python 3.6+
+* Docker
+
 
 ## Contributing
 
