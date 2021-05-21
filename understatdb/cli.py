@@ -103,6 +103,8 @@ def build_tables(args: typing.List[str] = typer.Option([], help='Additional argu
 # Cell
 
 
+# Use the list of league *values* (i.e. strings) so that the help text shows
+# all the possible inputs the user can use
 _DEFAULT_INGEST_LEAGUES = [l.value for l in understatdb.understat.League]
 _DEFAULT_INGEST_SEASONS = list(range(2014, 2021))
 
@@ -110,8 +112,15 @@ _DEFAULT_INGEST_SEASONS = list(range(2014, 2021))
 @app.command()
 def ingest(
     refresh: bool = False,
-    leagues: typing.List[str] = typer.Option(_DEFAULT_INGEST_LEAGUES, help='Leagues to import'),
-    seasons: typing.List[int] = typer.Option(_DEFAULT_INGEST_SEASONS, help='Seasons to import (by start year)'),
+    leagues: typing.List[str] = typer.Option(
+        _DEFAULT_INGEST_LEAGUES,
+        help='Leagues to import',
+        callback=lambda xs: [understatdb.understat.League(x) for x in xs]
+    ),
+    seasons: typing.List[int] = typer.Option(
+        _DEFAULT_INGEST_SEASONS,
+        help='Seasons to import (by start year)'
+    ),
 ):
     """ Ingest match and shot data from Understat.com """
 
